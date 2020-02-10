@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
 
-  "name": "Response-Modifier Dev Tools",
+  "name": "XHR-Modifier Dev Tools",
   "version": "0.1",
 
-  "description": "Dev Tools to modify response for XHR calls",
+  "description": "Dev Tools to modify XHR calls",
   "author": "jueschus",
 
   "devtools_page": "html/devtools.html",
