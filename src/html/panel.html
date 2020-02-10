@@ -1,22 +1,43 @@
 <html>
-  <head> </head>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
   <body>
-    <h1>Basic devtools panel to modify responses</h1>
-    <p>
+    <h3>Modify XHR</h3>
+    <div class="container-fluid mt-5">
       <h4>Add APIs to be mocked</h4>
       <form id="api-add-form">
-        <input type="text" id="api-add-url"/><br/>
-        <textarea id="api-add-body"></textarea><br/>
-        <button type="submit">add</button>
+        <div class="form-group">
+          <label for="api-add-url">API Url</label>
+          <input class="form-control" type="text" id="api-add-url" />
+        </div>
+        <div class="form-group">
+          <label for="api-add-body">API Url</label>
+          <textarea class="form-control" id="api-add-body"></textarea>
+          <small id="api-add-body-help" class="form-text text-muted"
+            >Needs to be in JSON format.</small
+          >
+        </div>
+        <button type="submit" class="btn btn-primary float-right">add</button>
       </form>
-    </p>
-    <p>
+    </div>
+    <div class="container-fluid mt-5">
       <h4>Currently mocked APIs</h4>
-      <table>
-        <thead><tr><th>URL</th><th>BODY</th></tr></thead>
+      <table class="table table-striped">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">URL</th>
+            <th scope="col">BODY</th>
+          </tr>
+        </thead>
         <tbody></tbody>
       </table>
-    </p>
+    </div>
     <script src="/js/panel.js"></script>
   </body>
 </html>

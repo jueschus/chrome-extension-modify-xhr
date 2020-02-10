@@ -25,6 +25,7 @@ renderApis = () => {
   let tableBodyStr = '';
   apis.forEach(elem => {
     tableBodyStr += `<tr><td>${elem.url}</td><td>${elem.body}</td></tr>`;
+    // TODO add X to remove entry from table
   });
   tableBodyElem.innerHTML = tableBodyStr;
 };
