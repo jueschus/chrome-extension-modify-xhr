@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+
+  "name": "Response-Modifier Dev Tools",
+  "version": "0.1",
+
+  "description": "Dev Tools to modify response for XHR calls",
+  "author": "jueschus",
+
+  "devtools_page": "html/devtools.html",
+
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "js": ["/js/xhrModify.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

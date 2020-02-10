@@ -1,0 +1,22 @@
+<html>
+  <head> </head>
+  <body>
+    <h1>Basic devtools panel to modify responses</h1>
+    <p>
+      <h4>Add APIs to be mocked</h4>
+      <form id="api-add-form">
+        <input type="text" id="api-add-url"/><br/>
+        <textarea id="api-add-body"></textarea><br/>
+        <button type="submit">add</button>
+      </form>
+    </p>
+    <p>
+      <h4>Currently mocked APIs</h4>
+      <table>
+        <thead><tr><th>URL</th><th>BODY</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </p>
+    <script src="/js/panel.js"></script>
+  </body>
+</html>
