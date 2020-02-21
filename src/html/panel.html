@@ -9,6 +9,10 @@
   </head>
   <body>
     <h3>Modify XHR</h3>
+    <div id="refresh-warning" style="color: red;">
+      <span>Page needs to be refreshed</span
+      ><button id="refresh-button" type="button">refresh</button>
+    </div>
     <div class="container-fluid mt-5">
       <h4>Add APIs to be mocked</h4>
       <form id="api-add-form">
@@ -17,7 +21,7 @@
           <input class="form-control" type="text" id="api-add-url" />
         </div>
         <div class="form-group">
-          <label for="api-add-body">API Url</label>
+          <label for="api-add-body">API Body</label>
           <textarea class="form-control" id="api-add-body"></textarea>
           <small id="api-add-body-help" class="form-text text-muted"
             >Needs to be in JSON format.</small

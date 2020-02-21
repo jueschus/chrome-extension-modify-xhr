@@ -50,10 +50,11 @@ function checkForDOMAndInjectScript() {
 }
 
 chrome.runtime.sendMessage({ name: 'xhr-modifier', cmd: 'ready' }, response => {
-  console.log('received message: ' + JSON.stringify(response));
-  if (response && response.apis && response.apis.length) {
-    console.log('received apis: ' + JSON.stringify(response.apis));
-    apis = response.apis;
-    checkForDOMAndInjectScript();
+  if (!chrome.runtime.lastError) {
+    if (response && response.apis && response.apis.length) {
+      console.log('received apis: ' + JSON.stringify(response.apis));
+      apis = response.apis;
+      checkForDOMAndInjectScript();
+    }
   }
 });

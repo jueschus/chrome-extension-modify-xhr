@@ -15,5 +15,6 @@
       "js": ["/js/xhrModify.js"],
       "run_at": "document_start"
     }
-  ]
+  ],
+  "permissions": ["tabs", "notifications", "http://*/", "https://*/"]
 }

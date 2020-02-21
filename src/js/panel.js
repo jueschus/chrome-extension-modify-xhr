@@ -17,6 +17,7 @@ form.addEventListener('submit', e => {
   urlElem.value = '';
   bodyElem.value = '';
 
+  document.querySelector('#refresh-warning').style.display = 'block';
   renderApis();
 });
 
@@ -33,11 +34,17 @@ renderApis = () => {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.name === 'xhr-modifier') {
     if (request.cmd === 'ready') {
-      console.log(
-        'received "ready" from content script -> send apis to mock: ' +
-          JSON.stringify(apis)
-      );
+      console.log(`content script is "ready" -> send mocking apis...`);
+      document.querySelector('#refresh-warning').style.display = 'none';
       sendResponse({ apis });
     }
   }
+});
+
+document.querySelector('#refresh-button').addEventListener('click', () => {
+  chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+    chrome.tabs.executeScript(tabs[0].id, {
+      code: 'window.location.reload();'
+    });
+  });
 });
