@@ -10,8 +10,10 @@
   <body>
     <h3>Modify XHR</h3>
     <div id="refresh-warning" style="color: red;">
-      <span>Page needs to be refreshed</span
-      ><button id="refresh-button" type="button">refresh</button>
+      <span class="m-3">Page needs to be refreshed</span
+      ><button id="refresh-button" type="button" class="btn btn-danger">
+        refresh
+      </button>
     </div>
     <div class="container-fluid mt-5">
       <h4>Add APIs to be mocked</h4>
@@ -35,6 +37,7 @@
       <table class="table table-striped">
         <thead class="thead-light">
           <tr>
+            <th scope="col">DEL</th>
             <th scope="col">URL</th>
             <th scope="col">BODY</th>
           </tr>

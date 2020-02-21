@@ -18,7 +18,7 @@ form.addEventListener('submit', e => {
     urlElem.value = '';
     bodyElem.value = '';
 
-    document.querySelector('#refresh-warning').style.display = 'block';
+    showReloadWarning();
     renderApis();
   } catch (e) {
     alert(`submitted data is not valid, please check again!`);
@@ -28,18 +28,24 @@ form.addEventListener('submit', e => {
 renderApis = () => {
   const tableBodyElem = document.querySelector('tbody');
   let tableBodyStr = '';
-  apis.forEach(elem => {
-    tableBodyStr += `<tr><td>${elem.url}</td><td>${elem.body}</td></tr>`;
-    // TODO add X to remove entry from table
+  apis.forEach((elem, idx) => {
+    // prettier-ignore
+    tableBodyStr += `<tr>` +
+                      `<td style="font-weight: bold;" id="del-line-${idx}"><span class="badge badge-pill badge-danger" style="cursor: pointer;">X</span></td>` +
+                      `<td>${elem.url}</td>` +
+                      `<td>${elem.body}</td>` +
+                    `</tr>`;
   });
   tableBodyElem.innerHTML = tableBodyStr;
+
+  addDelListeners();
 };
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.name === 'xhr-modifier') {
     if (request.cmd === 'ready') {
       console.log(`content script is "ready" -> send mocking apis...`);
-      document.querySelector('#refresh-warning').style.display = 'none';
+      hideReloadWarning();
       sendResponse({ apis });
     }
   }
@@ -52,3 +58,22 @@ document.querySelector('#refresh-button').addEventListener('click', () => {
     });
   });
 });
+
+function showReloadWarning() {
+  document.querySelector('#refresh-warning').style.display = 'block';
+}
+
+function hideReloadWarning() {
+  document.querySelector('#refresh-warning').style.display = 'none';
+}
+
+function addDelListeners() {
+  document.querySelectorAll('td[id*=del-line-]').forEach(elem => {
+    elem.addEventListener('click', event => {
+      const id = event.target.id.substring(9);
+      apis.splice(id, 1);
+      renderApis();
+      showReloadWarning();
+    });
+  });
+}
