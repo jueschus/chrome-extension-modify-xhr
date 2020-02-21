@@ -9,16 +9,20 @@ form.addEventListener('submit', e => {
   const urlElem = document.querySelector('#api-add-url');
   const bodyElem = document.querySelector('#api-add-body');
 
-  apis.push({
-    url: urlElem.value,
-    body: JSON.stringify(JSON.parse(bodyElem.value)) // todo add try/catch + error message
-  });
+  try {
+    apis.push({
+      url: urlElem.value,
+      body: JSON.stringify(JSON.parse(bodyElem.value))
+    });
 
-  urlElem.value = '';
-  bodyElem.value = '';
+    urlElem.value = '';
+    bodyElem.value = '';
 
-  document.querySelector('#refresh-warning').style.display = 'block';
-  renderApis();
+    document.querySelector('#refresh-warning').style.display = 'block';
+    renderApis();
+  } catch (e) {
+    alert(`submitted data is not valid, please check again!`);
+  }
 });
 
 renderApis = () => {
